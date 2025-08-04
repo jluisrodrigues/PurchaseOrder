@@ -1,0 +1,128 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Create a new purchase order and consult order created by API",
+    "version": "1.0.0",
+    "title": "Purchase Order"
+  },
+  "host": "mingle-ionapi.inforcloudsuite.com",
+  "basePath": "/FBGVCG494PQZSJ29_TST/CustomerApi/RestSoap/purord",
+  "schemes": ["https"],
+  "paths": {
+    "/Create": {
+      "post": {
+        "summary": "Create Purchase Order",
+        "description": "Create new Purchase Order",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Basic data to create Purchase Order",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PurchaseOrderSoapOrd"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cadastro realizado com sucesso"
+          },
+          "400": {
+            "description": "Requisição inválida"
+          },
+          "500": {
+            "description": "Erro no processamento"
+          }
+        }
+      }
+    },
+
+    "/Find": {
+      "post": {
+        "summary": "Find Purchase Order",
+        "description": "Search Purchase Order registered by API",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Basic data Purchase Order",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FindSoapOrd"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cadastro realizado com sucesso"
+          },
+          "400": {
+            "description": "Requisição inválida"
+          },
+          "500": {
+            "description": "Erro no processamento"
+          }
+        }
+      }
+    }
+
+  },
+  "definitions": {
+    "PurchaseOrderSoapOrd": {
+      "type": "object",
+      "required": [
+        "OrdCompra",
+        "CodPN",
+        "TipoOC",
+        "DepCompra",
+        "Moeda"
+      ],
+      "properties": {
+        "OrdCompra": {
+          "type": "string",
+          "description": "Ordem de Compra",
+          "example": "SIM"
+        },
+        "CodPN": {
+          "type": "string",
+          "description": "Cód. Parceiro de Negócios",
+          "example": "ABC123456"
+        },
+        "TipoOC": {
+          "type": "string",
+          "description": "Tipo de Ordem",
+          "example": "OCN"
+        },
+        "DepCompra": {
+          "type": "string",
+          "description": "Departamento de Compra",
+          "example": "COMP02"
+        },
+        "Moeda": {
+          "type": "string",
+          "description": "Moeda",
+          "example": "R$"
+        }
+      }
+    }, 
+    "FindSoapOrd": {
+      "type": "object",
+      "required": [
+        "OrdCompra"
+      ],
+      "properties": {
+        "OrdCompra": {
+          "type": "string",
+          "description": "Ordem de Compra",
+          "example": ""
+        }
+        }
+      }
+    }
+
+  }
